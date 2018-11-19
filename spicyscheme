@@ -1,0 +1,5 @@
+echo "#lang racket" > ok.rkts
+echo "" >> ok.rkts
+echo `./spicyscheme.sh $1 | sed 's/<[^>]*>//g' | sed 's/<//g' | sed 's/>//g' | sed 's/\///g' | grep -v 'lang racket' >> ok.rkts`
+cat ok.rkts | grep define
+(echo ",en ok.rkts" && cat) | racket
